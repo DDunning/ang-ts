@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'favorite';
+
+  tweet = {
+		body: 'Here is the body of a tweet',
+		isLiked: false,
+		likesCount: 0
+	}
+
 }

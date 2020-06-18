@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { LikeComponent } from './like/like.component';
 import { RecaseComponent } from './recase/recase.component';
 import { TitlecasePipe } from './titlecase.pipe';
+import { Like2Component } from './like2/like2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LikeComponent,
     RecaseComponent,
-    TitlecasePipe
+    TitlecasePipe,
+    Like2Component
   ],
   imports: [
     BrowserModule
