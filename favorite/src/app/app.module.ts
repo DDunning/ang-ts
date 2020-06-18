@@ -6,6 +6,8 @@ import { LikeComponent } from './like/like.component';
 import { RecaseComponent } from './recase/recase.component';
 import { TitlecasePipe } from './titlecase.pipe';
 import { Like2Component } from './like2/like2.component';
+import { CreateCourseFormComponent } from './create-course-form/create-course-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { Like2Component } from './like2/like2.component';
     LikeComponent,
     RecaseComponent,
     TitlecasePipe,
-    Like2Component
+    Like2Component,
+    CreateCourseFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
