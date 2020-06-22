@@ -26,10 +26,8 @@ export class PostsComponent implements OnInit {
       (error: AppError) => {
         if (error instanceof NotFoundError){
           alert("Cannot access the posts.");
-        } else{
-          alert('An unexpected error occurred.');
-          console.log(error);
-        }
+        } else
+          throw error;
       });
   }
 
@@ -48,10 +46,8 @@ export class PostsComponent implements OnInit {
         if (error instanceof BadInputError){
           // report error.originalErrorit to the form.setError()
         }
-        else {
-          alert('An unexpected error occurred.');
-          console.log(error);
-        }
+        else
+          throw error;  // let the global handler pick it up
       });
   }
 
@@ -60,10 +56,6 @@ export class PostsComponent implements OnInit {
     .subscribe(
       response => {
         console.log(response as any);
-      },
-      error => {
-        alert('An unexpected error occurred.');
-        console.log(error);
       });
   }
 
@@ -77,10 +69,8 @@ export class PostsComponent implements OnInit {
       (error: AppError) => {
         if (error instanceof NotFoundError)
           alert("This post has already been deleted.");
-        else {
-          alert('An unexpected error occurred.');
-          console.log(error);
-        }
+        else
+          throw error;
       });
   }
 
