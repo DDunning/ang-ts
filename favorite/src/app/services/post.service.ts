@@ -24,40 +24,31 @@ export class PostService {
 
   getPosts() {
     return this.http.get(this.url, { observe: 'response', responseType: 'json' })
-    .pipe ( catchError( (error: Response) => {
-      if (error.status === 404)
-        return throwError(new NotFoundError());
-
-      return throwError(new AppError(error))}
-      )
-    );
+    .pipe ( catchError( this.handleError));
   }
 
   createPost(post){
     return this.http.post(this.url, post, { observe: 'body', responseType: 'json' })
-    .pipe ( catchError( (error: Response) => {
-      if (error.status === 400) {
-        console.log("Error 400 in post response.");
-        return throwError(new BadInputError());
-      }
-      return throwError(new AppError(error))}
-      )
-    );
+    .pipe ( catchError( this.handleError));
   }
 
   updatePost(id, changes){
-    return this.http.patch(this.postUrl(id), changes, { observe: 'response', responseType: 'json' });
+    return this.http.patch(this.postUrl(id), changes, { observe: 'response', responseType: 'json' })
+    .pipe ( catchError( this.handleError));
   }
 
   deletePost(id){
     return this.http.delete(this.postUrl(id), { observe: 'response', responseType: 'json' })
-    .pipe ( catchError( (error: Response) => {
-      if (error.status === 404)
-        return throwError(new NotFoundError());
-
-      return throwError(new AppError(error))}
-      )
-    );
+    .pipe ( catchError( this.handleError));
   }
   
+  private handleError(error: Response){
+    if (error.status === 404)
+      return throwError(new NotFoundError());
+    
+    if (error.status === 400)
+      return throwError(new BadInputError());
+
+    return throwError(new AppError(error))
+  }
 }
