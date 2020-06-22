@@ -14,6 +14,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { PasswordChangeFormComponent } from './password-change-form/password-change-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { AppErrorHandler } from './common/app-error-handler';
+import { FollowersComponent } from './followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AppErrorHandler } from './common/app-error-handler';
     Like2Component,
     CreateCourseFormComponent,
     PasswordChangeFormComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
