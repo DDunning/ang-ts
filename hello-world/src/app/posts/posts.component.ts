@@ -18,7 +18,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.service.getAll()
       .subscribe(
-        response => response.body as any[]);
+        response => this.posts = response.body as any[]);
         //posts => this.posts = posts);
   }
 
@@ -52,6 +52,11 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
-    this.service.delete(post.id);
+    this.service.delete(post.id)
+    .subscribe(
+      response => {
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index,1);
+      });
   }
 }
