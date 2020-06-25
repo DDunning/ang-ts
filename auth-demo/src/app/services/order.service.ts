@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class OrderService {
@@ -8,8 +9,9 @@ export class OrderService {
   }
 
   getOrders() { 
-    return [ 1, 2, 3];
-    // return this.http.get('/api/orders')
-    //   .map(response => response.json());
+    let token = localStorage.getItem('token');
+
+    return this.http.get('/api/orders', {headers: {'Authorization': 'Bearer ' + token}})
+    .pipe(  map(response => response as any[]));
   }
 }
