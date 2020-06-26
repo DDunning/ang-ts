@@ -6,14 +6,22 @@ import { transition, trigger, style, animate, state } from '@angular/animations'
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
+    trigger('slide', [
+      transition(':enter', [
+        style({ transform: "translateX(-20px)"}),
+        animate(1000) ]),
+      transition(':leave', [
+        animate(500), style({ transform: "translateX(-200px)"}) ])
+    ]),
+
+    trigger('slideOut', [
+      state('void', style({ transform: "translateX(-200px)"})),
+      transition('* => void', [ animate(500) ])
+    ]),
+
     trigger('fade', [
       state('void', style({  opacity: 0 })),
-      transition('void => *', [
-        animate(2000),
-      ]),
-      transition('* => void', [
-        animate(2000),
-      ])
+      transition('void <=> *', [ animate(2000) ])
     ])
   ]
 })
