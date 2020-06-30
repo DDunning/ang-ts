@@ -1,3 +1,4 @@
+import { fadeInAnimation } from './../animations';
 import { Component } from '@angular/core';
 import { bounceOutLeftAnimation } from '../animations';
 import { transition, trigger, style, animate, useAnimation, } from '@angular/animations';
@@ -9,8 +10,11 @@ import { transition, trigger, style, animate, useAnimation, } from '@angular/ani
   animations: [
     trigger('todoAnimation', [
       transition(':enter', [
-        style({ opacity: 0 }),
-        animate(2000)
+        useAnimation(fadeInAnimation, {
+          params: {
+            duration: '500ms'
+          }
+        })
       ]),
       transition(':leave', [
         style({ backgroundColor: 'red'}),
