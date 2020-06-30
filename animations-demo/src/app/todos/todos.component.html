@@ -8,6 +8,8 @@
   <button type="button"
       class="list-group-item text-left"
       @todoAnimation
+      (@todoAnimation.start)="animationStarted($event)"
+      (@todoAnimation.done)="animationDone($event)"
       *ngFor="let item of items"
       (click)="removeItem(item)"
       >{{ item }}</button>
